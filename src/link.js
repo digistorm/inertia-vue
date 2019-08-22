@@ -27,14 +27,25 @@ export default {
       type: Boolean,
       default: false,
     },
+    tag: {
+      type: String,
+      default: 'a',
+    },
+    activeClass: {
+      type: String,
+    },
   },
   render(h, { props, data, children }) {
-    return h('a', {
+    const attrs = {
+      ...data.attrs,
+      href: props.href,
+    }
+    if (props.activeClass && props.href === Inertia.page.url) {
+      attrs.class = { [props.activeClass]: true }
+    }
+    return h(props.tag, {
       ...data,
-      attrs: {
-        ...data.attrs,
-        href: props.href,
-      },
+      attrs,
       on: {
         ...(data.on || {}),
         click: event => {
