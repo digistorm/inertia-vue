@@ -145,9 +145,9 @@ While not required, for most projects it makes sense to create a default site la
 <template>
   <main>
     <header>
-      <inertia-link href="/">Home</inertia-link>
-      <inertia-link href="/about">About</inertia-link>
-      <inertia-link href="/contact">Contact</inertia-link>
+      <inertia-link href="/" active-class="active">Home</inertia-link>
+      <inertia-link href="/about" active-class="active">About</inertia-link>
+      <inertia-link href="/contact" active-class="active">Contact</inertia-link>
     </header>
 
     <article>
@@ -213,6 +213,18 @@ You can also preserve a page component's local state using the `preserve-state` 
 ~~~vue
 <input v-model="query" type="text" />
 <inertia-link href="/search" :data="{ query }" preserve-state>Search</inertia-link>
+~~~
+
+You can add an 'active' css class when the current page URL matches the `href` of the link
+
+~~~vue
+<inertia-link href="/" active-class="active">Home</inertia-link>
+~~~
+
+You can change the rendered tag of the link
+
+~~~vue
+<inertia-link href="/" tag="button">Home</inertia-link>
 ~~~
 
 ## Manually making visits

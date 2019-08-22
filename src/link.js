@@ -36,16 +36,13 @@ export default {
     },
   },
   render(h, { props, data, children }) {
-    const attrs = {
-      ...data.attrs,
-      href: props.href,
-    }
-    if (props.activeClass && props.href === Inertia.page.url) {
-      attrs.class = { [props.activeClass]: true }
-    }
     return h(props.tag, {
       ...data,
-      attrs,
+      attrs: {
+        ...data.attrs,
+        href: props.href,
+      },
+      class: (props.activeClass && props.href === Inertia.page.url) ? { [props.activeClass]: true } : null,
       on: {
         ...(data.on || {}),
         click: event => {
