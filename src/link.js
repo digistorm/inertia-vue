@@ -27,6 +27,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    only: {
+      type: Array,
+      default: () => [],
+    },
     tag: {
       type: String,
       default: 'a',
@@ -59,6 +63,7 @@ export default {
               replace: props.replace,
               preserveScroll: props.preserveScroll,
               preserveState: props.preserveState,
+              only: props.only,
             })
           }
         },

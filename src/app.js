@@ -41,10 +41,20 @@ export default {
   },
   render(h) {
     if (this.component) {
-      return h(this.component, {
+      const child = h(this.component, {
         key: this.key,
         props: this.props,
       })
+
+      if (this.component.layout) {
+        if (typeof this.component.layout === 'function') {
+          return this.component.layout(h, child)
+        }
+
+        return h(this.component.layout, [child])
+      }
+
+      return child
     }
   },
   install(Vue) {
