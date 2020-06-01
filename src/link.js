@@ -37,6 +37,7 @@ export default {
     },
     activeClass: {
       type: String,
+      default: 'inertia-link-active',
     },
   },
   render(h, { props, data, children }) {
